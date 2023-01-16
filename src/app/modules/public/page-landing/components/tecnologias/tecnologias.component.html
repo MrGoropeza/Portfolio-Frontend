@@ -1,0 +1,42 @@
+<div
+  class="absolute left-0 flex w-full translate-y-80 flex-col items-center gap-3 rounded-2xl bg-sky-600 transition-all duration-700 dark:bg-slate-900 md:static md:h-full md:translate-y-0 md:justify-center md:rounded-none"
+>
+  <div class="mt-2 flex items-center gap-3">
+    <h2 class="text-center text-3xl font-bold">
+      Tecnologías usadas en mi portfolio
+    </h2>
+  </div>
+
+  <p-tabView *ngIf="!(techsLoading$ | async)!" class="w-full">
+    <p-tabPanel *ngFor="let group of techsGroup$ | async" [header]="group.label">
+      <app-tech-list [techs]="selectGrouptoTechList(group.items)"></app-tech-list>
+    </p-tabPanel>
+  </p-tabView>
+
+  <div
+    *ngIf="(techsLoading$ | async)!"
+    class="flex max-w-full flex-col items-center"
+  >
+    <div class="flex gap-2">
+      <p-skeleton
+        width="7rem"
+        height="2rem"
+        *ngFor="let dummy of [].constructor(3)"
+      ></p-skeleton>
+    </div>
+    <div class="flex max-w-full gap-3 overflow-x-auto">
+      <div
+        class="my-2 flex flex-col items-center gap-3"
+        *ngFor="let dummy of [].constructor(3)"
+      >
+        <p-skeleton
+          size="12rem"
+          borderRadius="16px"
+          styleClass="bg-slate-600"
+        ></p-skeleton>
+        <p-skeleton width="10rem" styleClass="bg-slate-600"></p-skeleton>
+      </div>
+    </div>
+  </div>
+
+</div>

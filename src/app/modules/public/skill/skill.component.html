@@ -1,0 +1,37 @@
+<div
+  class="m-4 flex justify-center gap-1 rounded-lg border-2 border-yellow-500 p-4 dark:border-blue-300"
+>
+  <div class="logo">
+    <b><span>Mis </span><span>habilidades</span></b>
+  </div>
+</div>
+
+<div
+  class="m-4 flex flex-wrap items-center justify-center gap-3 rounded-lg border-2 border-yellow-500 p-4 dark:border-blue-300"
+>
+  <div
+    class="flex items-center justify-center gap-3"
+    *ngFor="let value of (values | async)!"
+  >
+    <app-ui-knob
+      [value]="value.value"
+      [label]="value.name"
+      [readonly]="true"
+      textColor="white"
+      rangeColor="#cbd5e1"
+      valueColor="#1d4ed8"
+    ></app-ui-knob>
+  </div>
+  <div
+    *ngIf="(values | async)!.length === 0 && !(valuesLoading | async)!"
+    class="text-xl font-bold"
+  >
+    No tengo habilidades... :c
+  </div>
+  <div *ngIf="valuesLoading | async" class="flex flex-wrap gap-3">
+    <div class="flex flex-col gap-3" *ngFor="let _ of [].constructor(3)">
+      <p-skeleton shape="circle" size="5rem"></p-skeleton>
+      <p-skeleton width="5rem" height="1.4rem"></p-skeleton>
+    </div>
+  </div>
+</div>

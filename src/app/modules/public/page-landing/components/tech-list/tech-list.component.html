@@ -1,0 +1,19 @@
+<div class="flex max-w-max mx-auto overflow-x-auto">
+  <div *ngIf="techs.length === 0">
+    <p class="text-center font-semibold my-4">Ninguna tecnología cargada para esta categoría aún.</p>
+  </div>
+  <div class="py-4 px-1" *ngFor="let tech of techs">
+    <img
+      [src]="tech.imageUrl"
+      alt="{{ tech.name }}-Logo"
+      class="w-48 max-w-none animate-float py-4"
+    />
+    <p
+      class="cursor-help text-center text-xl font-bold"
+      [pTooltip]="tech.description"
+      tooltipPosition="top"
+    >
+      {{ tech.name }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div
+  class="mb-2 flex flex-wrap items-center justify-center gap-4 lg:justify-between"
+>
+  <p-tabMenu
+    [model]="menuItems"
+    class="max-w-full"
+    styleClass="max-w-min"
+  ></p-tabMenu>
+
+  <div
+    class="mr-3 h-16 w-80 bg-yo-programo bg-contain bg-center bg-no-repeat"
+  ></div>
+</div>
+
+<router-outlet></router-outlet>
+
+<p-button
+  icon="bi bi-terminal-fill"
+  (onClick)="openTerminal()"
+  styleClass="p-button-rounded p-button-primary p-button-lg fixed right-5 bottom-5 animate-bounce"
+></p-button>
+
+<p-toast [breakpoints]="{ '500px': { width: '90%' } }"></p-toast>

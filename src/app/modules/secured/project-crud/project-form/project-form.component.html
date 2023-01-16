@@ -1,0 +1,67 @@
+<form [formGroup]="form">
+  <app-ui-input-text
+    [group]="form"
+    control="name"
+    label="Nombre"
+  ></app-ui-input-text>
+
+  <app-ui-input-text
+    [group]="form"
+    control="url"
+    label="Link"
+  ></app-ui-input-text>
+
+  <app-ui-textarea
+    [group]="form"
+    control="description"
+    label="Descripción"
+  ></app-ui-textarea>
+
+  <div class="flex gap-1">
+    <app-ui-multiselect
+      class="flex-1"
+      [group]="form"
+      control="collab"
+      label="Colaboradores"
+      [options]="(persons | async)!"
+      optionLabel="name"
+    ></app-ui-multiselect>
+
+    <p-button icon="pi pi-plus" class="mt-8" (onClick)="addPerson()"></p-button>
+  </div>
+
+  <div class="flex gap-1">
+    <app-ui-multiselect
+      class="flex-1"
+      [group]="form"
+      control="techs"
+      label="Tecnologías usadas"
+      selectedItemsLabel="{0} tecnologías seleccionadas"
+      [withGrouping]="true"
+      [options]="(techs | async)!"
+    ></app-ui-multiselect>
+
+    <p-button icon="pi pi-plus" class="mt-8" (onClick)="addTech()"></p-button>
+  </div>
+
+  <div class="flex gap-1">
+    <app-ui-dropdown
+      class="flex-1"
+      [group]="form"
+      control="place"
+      label="Lugar"
+      [options]="(places | async)!"
+      optionLabel="name"
+    ></app-ui-dropdown>
+
+    <p-button icon="pi pi-plus" class="mt-8" (onClick)="addPlace()"></p-button>
+  </div>
+</form>
+
+<app-ui-form-buttons
+  [cargando]="cargando"
+  (cancelarClick)="cancelar()"
+  (guardarClick)="guardar()"
+></app-ui-form-buttons>
+
+<!-- <pre>{{ form.getRawValue() | json }}</pre> -->

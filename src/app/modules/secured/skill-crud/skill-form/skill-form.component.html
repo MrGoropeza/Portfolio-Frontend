@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <app-ui-knob
+    [group]="form"
+    control="value"
+    textColor="white"
+    rangeColor="gray"
+    valueColor="blue"
+  ></app-ui-knob>
+
+  <app-ui-input-text
+    [group]="form"
+    control="name"
+    label="Nombre"
+  ></app-ui-input-text>
+</form>
+
+<app-ui-form-buttons
+  [cargando]="cargando"
+  (cancelarClick)="cancelar()"
+  (guardarClick)="guardar()"
+></app-ui-form-buttons>
+
+<!-- <pre>{{ form.getRawValue() | json }}</pre> -->

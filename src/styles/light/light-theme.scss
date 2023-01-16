@@ -1,0 +1,46 @@
+body {
+  @apply min-h-screen bg-gradient-to-br from-slate-300 to-blue-500;
+}
+
+.p-button{
+  background-color: #4F46E5;
+}
+
+.p-button-primary {
+  @apply bg-blue-700;
+}
+
+.p-tabmenu .p-tabmenu-nav {
+  @apply gap-2 border-transparent bg-transparent;
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  @apply border-yellow-500 bg-transparent text-slate-900;
+}
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover
+  .p-menuitem-link {
+  @apply border-yellow-500 bg-slate-300 text-slate-900;
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+  @apply border-slate-500 bg-slate-300 text-slate-900;
+}
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem
+  .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+.p-fileupload .p-fileupload-buttonbar,
+.p-fileupload .p-fileupload-content {
+  @apply p-2;
+}
+
+.p-fileupload .p-fileupload-content .p-fileupload-files > div{
+  @apply flex gap-3 max-w-full overflow-x-auto
+}
+
+.p-skeleton{
+  @apply bg-slate-600;
+}

@@ -1,0 +1,17 @@
+<p-button
+  icon="bi bi-terminal-fill"
+  (onClick)="visible = !visible"
+  styleClass="p-button-rounded p-button-primary p-button-lg fixed right-5 bottom-5 animate-bounce"
+></p-button>
+
+<p-dialog
+  [(visible)]="visible"
+  position="bottom-right"
+  header="Terminal"
+  styleClass="max-w-full"
+  [maximizable]="false"
+  [resizable]="false"
+  [draggable]="false"
+>
+  <p-terminal #terminal></p-terminal>
+</p-dialog>

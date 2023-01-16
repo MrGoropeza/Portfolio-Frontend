@@ -1,0 +1,58 @@
+<form class="grid" [formGroup]="form">
+  <app-ui-input-text
+    [group]="form"
+    control="name"
+    label="Nombre"
+  ></app-ui-input-text>
+
+  <app-ui-input-text
+    [group]="form"
+    control="title"
+    label="Título"
+  ></app-ui-input-text>
+
+  <app-ui-input-text
+    [group]="form"
+    control="nameUrl"
+    label="Link"
+  ></app-ui-input-text>
+
+  <div class="flex gap-1">
+    <app-ui-multiselect
+      class="flex-1"
+      [group]="form"
+      control="techs"
+      label="Tecnologías usadas"
+      selectedItemsLabel="{0} tecnologías seleccionadas"
+      [withGrouping]="true"
+      [options]="(techs | async)!"
+    ></app-ui-multiselect>
+
+    <p-button icon="pi pi-plus" class="mt-8" (onClick)="addTech()"></p-button>
+  </div>
+
+  <div class="mt-4 flex flex-col items-center">
+    <p class="">Foto de Perfil Actual</p>
+    <p-image
+      [src]="form.controls['imageUrl'].value"
+      [preview]="true"
+      appendTo="body"
+      imageClass="object-cover rounded-full aspect-square"
+      styleClass="rounded-full aspect-square max-w-xs overflow-hidden"
+    ></p-image>
+  </div>
+
+  <app-ui-file-upload
+    class="mt-4"
+    label="Subir Foto de Perfil"
+    [(files)]="files"
+  ></app-ui-file-upload>
+
+  <app-ui-form-buttons
+    [cargando]="cargando"
+    (cancelarClick)="cancelar()"
+    (guardarClick)="guardar()"
+  ></app-ui-form-buttons>
+</form>
+
+<!-- <pre>{{ form.getRawValue() | json }}</pre> -->

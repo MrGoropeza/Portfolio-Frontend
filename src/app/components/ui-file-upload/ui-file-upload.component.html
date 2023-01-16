@@ -1,0 +1,51 @@
+<div class="max-w-full">
+  <label class="ml-3" for="file-upload">{{ label }}</label>
+  <p-fileUpload
+    #fileUpload
+    id="file-upload"
+    name="file[]"
+    [files]="files"
+    [mode]="mode"
+    [multiple]="multiple"
+    [showUploadButton]="showUploadButton"
+    [showCancelButton]="showCancelButton"
+    [customUpload]="customUpload"
+    (uploadHandler)="this.filesChange.emit($event.files);"
+    (onSelect)="this.fileUpload.upload()"
+  >
+    <ng-template let-file pTemplate="file">
+      <div class="flex justify-center">
+        <div class="relative overflow-hidden rounded-xl bg-slate-900">
+          <p-image
+            [src]="file.objectURL"
+            imageClass="aspect-square max-h-60 max-w-none object-cover"
+            [preview]="true"
+            appendTo="body"
+          ></p-image>
+          <div
+            class="absolute bottom-0 right-0 flex w-full max-w-full items-center justify-between gap-2 bg-slate-900/70"
+          >
+            <div class="flex w-9/12 flex-col pl-1">
+              <p class="truncate font-bold">{{ file.name }}</p>
+              <p class="font-bold">{{ file.size | bytes }}</p>
+            </div>
+            <app-ui-button
+              icon="pi pi-times"
+              class="p-button-rounded w-3/12"
+              (clickAction)="removeFile(file)"
+            ></app-ui-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content" let-files>
+      <div *ngIf="files.length === 0">
+        <div
+          class="flex h-20 w-full items-center justify-center border-2 border-dashed border-slate-400"
+        >
+          <i class="pi pi-image text-2xl"></i>
+        </div>
+      </div>
+    </ng-template>
+  </p-fileUpload>
+</div>
